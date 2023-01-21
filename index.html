@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Snake Game</title>
+	<link rel="Icon" href="Images/snicon.png">
+	<link href="https://fonts.googleapis.com/css2?family=Belleza&family=Montserrat:wght@100&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+	<style type="text/css">
+		:root
+		{
+			--ttl-color: #b8dc6b;
+			--main-font: 'Montserrat', sans-serif;
+			--beige: #d4c48c;
+			--dark-beige: #a85;
+			--brown: #420;
+		}
+		body
+		{
+			margin: 0px;
+			background: #340;
+		}
+
+		.Sup
+		{
+			background: #5fa53a;
+			padding: 10px;
+			display: flex;
+			padding: 20px;
+			margin-bottom: 40px;
+			border-radius: 60px;
+		}
+			.Titl
+			{
+				font-size: 80px;
+				font-family: 'Open Sans', sans-serif;
+				color: var(--ttl-color);
+				margin: auto;
+			}
+
+		.Franja
+		{
+			background: var(--dark-beige);
+			display: flex;
+			margin-bottom: 40px;
+			margin-left: 60px;
+			margin-right: 60px;
+			padding: 20px;
+		}
+			.Franja p
+			{
+				margin: auto;
+				color: var(--brown);
+				font-family: var(--main-font);
+				font-size: 20px;
+				font-weight: bold;
+			}
+
+		.Mid
+		{
+			display: flex;
+			margin-left: 60px;
+			margin-right: 60px;
+			flex-wrap: wrap;
+		}
+			.RulesB
+			{
+				background: var(--dark-beige);
+				flex-grow: 2;
+				margin-right: 20px;
+			}
+			.Rules
+			{
+				color: var(--brown);
+				font-family: var(--main-font);
+				font-weight: bold;
+				background: var(--beige);
+				padding: 20px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 10px;
+			}
+			.Rules h2
+			{
+				font-size: 35px;
+			}
+			.Rules div
+			{
+				padding: 15px;
+				padding-left: 30px;
+				padding-right: 30px;
+				font-size: 20px;
+			}
+			.ImgB
+			{
+				background: var(--dark-beige);
+				flex-grow: 1;
+				display: flex;
+				align-items: center;
+			}
+			.Img
+			{
+				margin: auto;
+				background: var(--beige);
+				width: 95%;
+				height: 95%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.Img img
+			{
+				max-width: 350px;
+				max-height: 350px;
+				min-width: 50px;
+				min-height: 50px;
+			}
+
+		.Inf
+		{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 40px;
+		}
+		.Inf button
+		{
+			font-family: 'Open Sans', sans-serif;
+			font-size: 40px;
+			font-weight: bold;
+			padding: 20px;
+			padding-left: 150px;
+			padding-right: 150px;
+			color: #d4c48c;
+			background: #a70;
+			border-width: 0px;
+			border-radius: 7px;
+		}
+		.Inf button:hover
+		{
+			cursor: pointer;
+			background: #477;
+			font-size: 45px;
+			transition: all 0.25s;
+		}
+	</style>
+</head>
+<body>
+	<div class="Sup">
+		<h1 class="Titl">SNAKE GAME</h1>
+	</div>
+
+	<div class="Franja">
+		<p>Creado por: Fabian Mariano Jiménez Herrera - Código: 217815172 - Universidad de Guadalajara - CUCEI</p>
+	</div>
+	
+	<div class="Mid">
+		<div class="RulesB">
+		<div class="Rules">
+			<h2>
+				¿CÓMO JUGAR?
+			</h2>
+			<div>
+				<p>► Desplaza tu personaje con las flechas → ↑ ← ↓ o con las teclas WASD.</p>
+				<p>► Recolecta los elementos comestibles para aumentar el tamaño de tu personaje.</p>
+				<p>► No colisiones tu personaje con los obstáculos.</p>
+				<p>► No colisiones tu personaje con los límites.</p>
+				<p>► No colisiones tu personaje con tu propio personaje.</p>
+			</div>
+		</div>
+		</div>
+		<div class="ImgB">
+		<div class="Img">
+			<img src="Images/symbol.png">
+		</div>
+		</div>
+	</div>
+
+	<div class="Inf">
+		<button class="Play" onclick="location.href='https://www.google.com/search?q=snake&sxsrf=AJOqlzWZMgpJ4ZBSS8dtpifKMllhw-vfkg%3A1674262347342&source=hp&ei=SzfLY_ahEufNkPIPjoGZ8Aw&iflsig=AK50M_UAAAAAY8tFWwN2cjru0i3kg9TFoLzN8mO2605y&gs_ssp=eJzj4tTP1TcwNC03zjZg9GItzkvMTgUALVUFHA&oq=snake&gs_lcp=Cgdnd3Mtd2l6EAMYADILCC4Q1AIQsQMQgAQyCwgAEIAEELEDEIMBMgsIABCABBCxAxCDATILCAAQgAQQsQMQgwEyCwguEIAEELEDENQCMgsILhCABBCxAxDUAjIFCAAQgAQyBQgAEIAEMgUIABCABDIHCAAQgAQQCjoHCCMQ6gIQJzoOCAAQ6gIQtAIQ2QIQ5QI6EQguEIAEELEDEIMBEMcBENEDOg4ILhDHARCxAxDRAxCABDoICAAQgAQQsQM6CwguEIAEELEDEIMBOg0IABCABBCxAxCDARAKUMv12wJYrobcAmCijtwCaAhwAHgAgAHkAYgB1w-SAQU0LjEuN5gBAKABAbABBw&sclient=gws-wiz'">Jugar</button>
+	</div>
+</body>
+</html>
